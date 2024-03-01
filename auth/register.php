@@ -29,12 +29,6 @@ if ($_POST['register']){
             echo "Error inserting data into the database: " . mysqli_error($connect);
             
         }
-
-        // Your code to insert the data into the database goes here
-        // For example:
-        // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        // $sql = "INSERT INTO your_table_name (username, password) VALUES ('$username', '$hashedPassword')";
-        // $conn->query($sql);
     }
 } else {
     echo "Password and confirmation password do not match.";
