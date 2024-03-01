@@ -1,5 +1,5 @@
 <?php
     session_start();
     session_destroy();
-    header("location: index.html");
+    header("location: ../from-end/login.html");
 ?>
