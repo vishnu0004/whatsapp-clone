@@ -6,6 +6,10 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+body{
+    min-height: 100vh;
+}
+
 .animate__animated {
     --animate-duration: 200ms;
     --animate-delay: 0.3s;
