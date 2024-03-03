@@ -1,0 +1,134 @@
+.chats {
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+}
+.chats .block {
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 0.7px solid var(--block);
+    cursor: pointer;
+}
+
+.chats .block.active {
+    background: var(--block);
+    border-top: 0.2px solid var(--block);
+}
+
+.chats .block.active:hover {
+    background: var(--block);
+}
+
+.chats .block:hover {
+    background: var(--secondary);
+}
+
+.animate__animated.animate__fadeIn {
+    --animation-delay: 800ms;
+    --animation-duration: 0.3s;
+}
+
+.chats .block .imgBox {
+    position: relative;
+    min-width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chats .block .h-text {
+    position: relative;
+    width: 100%;
+}
+
+.chats .block .h-text .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.chats .block .h-text .head h4 {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--h4);
+    letter-spacing: 0.4px;
+    margin-bottom: 0;
+}
+
+.chats .block .h-text .head .time {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--primary);
+    margin-bottom: 0rem;
+}
+
+.chats .block.unread .h-text .head .time {
+    color: var(--unread);
+}
+
+
+.chats .block .message-chat {
+    display: flex;
+    align-items: center;
+}
+
+.chats .block .message-chat .chat-text-icon {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chats .block .message-chat .chat-text-icon .thanks {
+    overflow: hidden;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--primary);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+
+.chats .block .message-chat .white-tick {
+    color: var(--primary);
+}
+
+.chats .block .message-chat .blue-tick {
+    color: var(--tick-icons);
+}
+
+.chats .block .message-chat .chat-text-icon .unread {
+    display: flex;
+}
+
+.chats .block .message-chat .chat-text-icon .numb {
+    background: var(--unread);
+    color: #fff;
+    font-weight: 500;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75em;
+    margin-left: auto;
+}
+
+.chats .block .hide {
+    display: none;
+    color: var(--primary);
+    margin-left: 5px;
+    transition: 0.3s ease;
+}
+
+.chats .block:hover .hide {
+    display: block;
+}

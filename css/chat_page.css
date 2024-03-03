@@ -1,5 +1,12 @@
-body{
-    height: 100vh;
+.header {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: var(--secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
 }
 
 .userImg {
@@ -17,4 +24,45 @@ body{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.search-bar {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.search, .go-back {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    font-size: 1em;
+    color: var(--icons);
+    justify-content: center;
+    align-items: center;
+    transition: .8s all;
+}
+
+.go-back {
+    opacity: 0;
+    color: #008069;
+}
+
+.search-bar div input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: var(--secondary);
+    border-radius: 7px;
+    padding: 6px;
+    height: 38px;
+    font-size: 14px;
+    align-items: center;
+    color: var(--h4);
+    padding-left: 45px;
 }
