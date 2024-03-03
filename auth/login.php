@@ -14,7 +14,9 @@ if (mysqli_num_rows($check) > 0) {
 
     $_SESSION['userdata'] = $userdata;
 
-    header("Location: ../pages/home.php");
+    $_SESSION['login-error'] = '';
+    header("Location: ../pages/chat.php");
 } else {
-    echo "User not found!";
+    $_SESSION['login-error'] = "User not found!";
+    header("Location: ../front-end/login.php");
 }

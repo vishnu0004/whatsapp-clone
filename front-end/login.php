@@ -1,14 +1,9 @@
 <?php
-// include 'pdo.php';
 session_start();
 
-// If user submit the user id
-if (isset($_POST['user_id'])) {
-   $_SESSION['user_id'] = $_POST['user_id'];
-   header('location: index.php');
-   return;
-}
-?>
+$error = isset($_SESSION['login-error']) ? $_SESSION['login-error'] : '';
+
+?> 
 
 <?php include 'header.php'; ?>
 
@@ -23,14 +18,19 @@ if (isset($_POST['user_id'])) {
             <form class="d-flex flex-column gap-4" action="../auth/login.php" method="POST">
                <div>
                   <label for="username">Username</label>
-                  <input type="text" name="username" id="username" class="form-control">
+                  <input type="text" name="username" id="username" class="form-control" required>
                </div>
                <div>
                   <label for="password">Password</label>
-                  <input type="password" name="password" id="password" class="form-control">
+                  <input type="password" name="password" id="password" class="form-control" required>
+               </div>
+               <div class="h5 text-danger">
+                  <?php echo $error; ?>
                </div>
                <button type="submit" class="btn btn-primary form-control ">Submit</button>
+               <p>don't have a account! <a href="./register.php">Register</a></p>
             </form>
+
          </div>
       </div>
    </div>
