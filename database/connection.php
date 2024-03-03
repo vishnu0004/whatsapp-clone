@@ -11,6 +11,6 @@ if($connect){
     //    echo "Connection ok" ;
 }
 else{
-    echo "connection faild !" ;
+    echo "connection fail !" ;
 }
 ?>
