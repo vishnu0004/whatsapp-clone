@@ -1,47 +1,36 @@
 <?php
-
 error_reporting(0);
 
 include('../database/connection.php');
 require_once('../database/queries.php');
 
-// Assuming you have a form submission
-if ($_POST['register']){
-    $username = $_POST["uname"];
+session_start();
+
+    $username = $_POST["username"];
     $password = $_POST["password"];
     $confirmPassword = $_POST["cpassword"];
-}
 
- // Check if passwords match
- if ($password === $confirmPassword) {
+    // Check if passwords match
+    if ($password === $confirmPassword) {
+        // Check if the username already exists
+        if (isUsernameExists($connect, $username)) {
+            $_SESSION['register-error'] = "Username already exists. Please choose a different username.";
+        } else {
+            $insert = mysqli_query($connect, "INSERT INTO users (username, password_hash) VALUES ('$username', '$password')");
 
-    // Check if the username already exists
-    if (isUsernameExists($connect, $username, $insert)) {
-        echo "Username already exists. Please choose a different username.";
+            if ($insert) {
+                $_SESSION['register-error'] = '';
+                header("Location: ../pages/chat.php");
+                exit();
+            } else {
+                $_SESSION['register-error'] = "Error inserting data into the database: " . mysqli_error($connect);
+            }
+        }
     } else {
-
-        $insert = mysqli_query($connect, "INSERT INTO users (username, password_hash) VALUES ('$username', '$password')");
-
-        if($insert){
-            echo "Data has been successfully inserted into the database.";
-        }
-        else{
-            echo "Error inserting data into the database: " . mysqli_error($connect);
-            
-        }
-
-        // Your code to insert the data into the database goes here
-        // For example:
-        // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        // $sql = "INSERT INTO your_table_name (username, password) VALUES ('$username', '$hashedPassword')";
-        // $conn->query($sql);
+        $_SESSION['register-error'] = "Password and confirmation password do not match.";
     }
-} else {
-    echo "Password and confirmation password do not match.";
-}
-    
+
+    // Redirect back to the registration page
+    header("Location: ../front-end/register.php");
+    exit();
 ?>
-
-
-
-
