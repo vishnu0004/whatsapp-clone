@@ -5,14 +5,12 @@ function profileimg($imageUrl) {
     echo '</div>';
 }
 
-function generateChatListItem($userName, $lastSeen, $lastMessage, $profileImageUrl) {
-
-
+function generateChatListItem($userName, $lastSeen, $lastMessage, $profileImageUrl, $userStatus) {
     echo '<div class="block chat-list border-bottom">';
     echo '<!-- Img -->';
-
+    echo '<div class="'. ($userStatus === 'Online' ? 'online ' : ' ') .'">';
     profileimg($profileImageUrl);
-
+    echo '</div>';
     echo '<!-- Text -->';
     echo '<div class="h-text">';
     echo '<div class="head">';
@@ -23,7 +21,7 @@ function generateChatListItem($userName, $lastSeen, $lastMessage, $profileImageU
     echo '<div class="chat-text-icon">';
     echo '<span class="thanks">' . $lastMessage . '</span>';
     echo '<div class="icon-more">';
-    echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 20" width="19" height="20" class="hide animate__animated animate__fadeInUp">';
+    echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 20" width="19" height="20" class="hide animate\_\_animated animate\_\_fadeInUp">';
     echo '<path fill="currentColor" d="M3.8 6.7l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z"></path>';
     echo '</svg>';
     echo '</div>';

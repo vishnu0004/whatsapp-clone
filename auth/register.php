@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 
-include('../database/connection.php');
+// include('../database/connection.php');
 require_once('../database/queries.php');
 
 session_start();

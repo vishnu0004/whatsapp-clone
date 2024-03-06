@@ -7,12 +7,20 @@
 }
 
 body{
-    min-height: 100vh;
+    height: 90vh;
 }
 
 .animate__animated {
     --animate-duration: 200ms;
     --animate-delay: 0.3s;
+}
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: var(--scrollBar);
 }
 
 :root {
