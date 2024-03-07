@@ -1,7 +1,7 @@
 .chats {
     position: relative;
-    height: 100vh;
-    overflow-y: auto;
+    height: calc(100% - 112px);
+    overflow-y: scroll;
 }
 .chats .block {
     position: relative;
@@ -131,4 +131,10 @@
 
 .chats .block:hover .hide {
     display: block;
+}
+
+
+.online{
+    border-radius: 50%;
+    outline: 2px solid #06cf9c;
 }

@@ -1,6 +1,11 @@
+<?php
+include '../database/queries.php';
+include '../database/connection.php';
+?>
+
 <div class="header">
     <!-- Profile Picture -->
-    <?php profileimg("../assets/profile.svg") ?>
+    <?php profileimg("../assets/profile.svg"); ?>
 
     <!-- Dropdown -->
     <div class="dropdown">
@@ -17,16 +22,35 @@
 </div>
 
 <!-- Search Bar -->
-<form class="form-inline d-flex gap-2">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+<form class="form-inline d-flex gap-2 my-1 ">
+    <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 </form>
 
+<?php
+        if (isset($_GET['search'])) {
+            // Display search results if a search term is provided
+            $searchTerm = htmlspecialchars($_GET['search']);
+            $data = fetchUsersBySearch($connect, $searchTerm);
+            // dd($data);
+        } else {
+            // Display all users if no search term
+            $data = fetchallusers($connect);
+        }
+?>
+
 <!-- list og users -->
 <div class="chats">
-    <?php
-    foreach ($data as $item) {
-        generateChatListItem($item[1], formatDateTime($item[2]), $item[4], $item[3]);
-    }
-    ?>
+    <?php foreach ($data as $user): ?>
+        <?php
+        $userid = $user['userid'] ?? '';
+        $userName = $user['username'] ?? '';
+        $userStatus = $user['Status'] ?? '';
+        $lastSeen = $user['LastSeen'] ?? '';
+        $lastMessage = "No recent message";
+        $profileImageUrl = "../assets/profile.svg";
+        ?>
+        <?php generateChatListItem($userid, $userName, formatDateTime($lastSeen), $lastMessage, $profileImageUrl, $userStatus); ?>
+    <?php endforeach; ?>
+    
 </div>
