@@ -5,7 +5,7 @@ include '../database/connection.php';
 
 <div class="header">
     <!-- Profile Picture -->
-    <?php profileimg("../assets/profile.svg") ?>
+    <?php profileimg("../assets/profile.svg"); ?>
 
     <!-- Dropdown -->
     <div class="dropdown">
@@ -43,13 +43,14 @@ include '../database/connection.php';
 <div class="chats">
     <?php foreach ($data as $user): ?>
         <?php
+        $userid = $user['userid'] ?? '';
         $userName = $user['username'] ?? '';
         $userStatus = $user['Status'] ?? '';
         $lastSeen = $user['LastSeen'] ?? '';
         $lastMessage = "No recent message";
         $profileImageUrl = "../assets/profile.svg";
         ?>
-        <?php generateChatListItem($userName, formatDateTime($lastSeen), $lastMessage, $profileImageUrl, $userStatus); ?>
+        <?php generateChatListItem($userid, $userName, formatDateTime($lastSeen), $lastMessage, $profileImageUrl, $userStatus); ?>
     <?php endforeach; ?>
     
 </div>

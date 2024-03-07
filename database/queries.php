@@ -18,10 +18,10 @@ function isUsernameExists($connect, $username)
 // Function to fetch all users
 function fetchAllUsers($connect)
 {
-    $sql = "SELECT username, Status, LastSeen, ProfilePictureURL 
+    $sql = "SELECT userid, username, Status, LastSeen, ProfilePictureURL 
             FROM users
             ORDER BY Status;";
-    
+
     $result = $connect->query($sql);
 
     if (!$result) {
@@ -47,5 +47,20 @@ function fetchUsersBySearch($connect, $searchTerm)
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
+
+function fetchUserById($connect, $id)
+{
+    $sql = "SELECT username, Status, ProfilePictureURL 
+            FROM `users` 
+            WHERE userid = '%$id%';";
+
+    $result = $connect->query($sql);
+
+    if (!$result) {
+        die("Error fetching users: " . $connect->error);
+    }
+
+    return $result->fetch(MYSQLI_ASSOC);
+}
 
 ?>

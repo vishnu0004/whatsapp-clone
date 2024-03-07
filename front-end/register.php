@@ -32,7 +32,7 @@ $error = isset($_SESSION['register-error']) ? $_SESSION['register-error'] : '';
                         <?php echo $error;?>
                     </div>
                     <button type="submit" class="btn btn-primary form-control ">Submit</button>
-                    <p>already have a account! <a href="./login.php">log in</a></p>
+                    <p>already have a account! <a href="/">log in</a></p>
                 </form>
 
             </div>

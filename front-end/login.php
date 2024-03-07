@@ -28,7 +28,7 @@ $error = isset($_SESSION['login-error']) ? $_SESSION['login-error'] : '';
                   <?php echo $error; ?>
                </div>
                <button type="submit" class="btn btn-primary form-control ">Submit</button>
-               <p>don't have a account! <a href="./register.php">Register</a></p>
+               <p>don't have a account! <a href="/register">Register</a></p>
             </form>
 
          </div>
